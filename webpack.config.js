@@ -17,7 +17,10 @@ module.exports = {
       },
       {
         test: /\.jsx$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['react']
+        }
       }
     ]
   }
