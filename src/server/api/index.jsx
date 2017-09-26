@@ -1,7 +1,7 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import assert from 'assert';
-import config from '../config';
+import config from '../../../config';
 
 let mdb;
 

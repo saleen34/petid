@@ -2,12 +2,12 @@ import sassMiddleware from 'node-sass-middleware';
 import express from 'express';
 import path from 'path';
 import config from './config';
-import apiRouter from './api';
+import apiRouter from './src/server/api';
 
 const server = express();
 
 server.use(sassMiddleware({
-  src: path.join(__dirname, 'sass'),
+  src: path.join(__dirname, '/src/client', 'sass'),
   dest: path.join(__dirname, 'public')
 }));
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import Input from '../src/components/Input';
+import Input from '../src/client/components/Input';
 
 describe('components/Input', () => {
   const div = document.createElement('div');

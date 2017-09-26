@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../components/Nav';
 import Content from '../components/content/Content';
 import Footer from '../components/Footer';
-import menus from '../../menus';
+import menus from '../../../config/menus';
 import * as api from '../api';
 
 class App extends React.Component {

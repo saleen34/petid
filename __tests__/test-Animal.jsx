@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import Animal from '../src/components/Animal';
+import Animal from '../src/client/components/Animal';
 
 describe('components/Animal', () => {
   const div = document.createElement('div');
