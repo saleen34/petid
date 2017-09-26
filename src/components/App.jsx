@@ -3,7 +3,6 @@ import Nav from '../components/Nav';
 import Content from '../components/content/Content';
 import Footer from '../components/Footer';
 import menus from '../../menus';
-import EditInline from '../components/EditInline';
 import * as api from '../api';
 
 class App extends React.Component {
@@ -31,7 +30,9 @@ class App extends React.Component {
   render () {
     return (
       <div className="container">
-        <EditInline initialValue="Hello World" />
+        <Nav menus={menus} />
+        <Content />
+        <Footer />
       </div>
     );
   }

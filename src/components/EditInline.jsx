@@ -21,6 +21,7 @@ class EditInline extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleClick (e, data) {
@@ -32,6 +33,10 @@ class EditInline extends React.Component {
 
   handleChange (event) {
     this.setState({ value: event.target.value });
+  }
+
+  handleBlur () {
+    this.setState({ isEditing: false });
   }
 
   render () {
@@ -47,7 +52,7 @@ class EditInline extends React.Component {
       );
     }
 
-    return <Input initialValue={this.props.initialValue} />;
+    return <Input initialValue={this.props.initialValue} onBlur={this.handleBlur} />;
   }
 }
 

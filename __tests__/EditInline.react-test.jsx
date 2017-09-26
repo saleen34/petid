@@ -25,4 +25,15 @@ describe('components/EditInline', () => {
     expect(div.find('Input').length).toEqual(1);
     expect(div.find('Input').props().initialValue).toEqual('Hello World');
   });
+
+  it('changes back to a div on blur', () => {
+    const div = shallow(
+      <EditInline initialValue="Hello World" />
+    );
+    div.simulate('click');
+    div.simulate('blur');
+
+    expect(div.length === 1);
+    expect(div.text() === 'Hello World');
+  });
 });

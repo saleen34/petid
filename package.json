@@ -4,13 +4,12 @@
   "description": "Animal Identification System",
   "main": "index.jsx",
   "scripts": {
-    "startdev": "nodemon --exec babel-node server.js --ignore public/",
     "watch:build": "webpack -wd",
     "watch:server": "nodemon --exec babel-node server.js --ignore public/",
     "start": "npm-run-all --parallel watch:server watch:build",
-    "dev": "webpack -wd",
     "test": "jest",
-    "populate": "node_modules/babel-cli/bin/babel-node.js db/testAnimals.jsx"
+    "debugTest": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "seed": "node_modules/babel-cli/bin/babel-node.js db/seed.jsx"
   },
   "keywords": [
     "Pet",
