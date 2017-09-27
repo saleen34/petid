@@ -1,50 +1,45 @@
 import React from 'react';
+import SignUpForm from './SignUpForm';
+import * as api from '../../api';
 
-const SignUp = () => (
-  <form className="form-horizontal" method="POST">
-    <fieldset>
-      <div id="legend">
-        <legend className="">Register</legend>
-      </div>
-      <div className="control-group">
-        <label className="control-label" htmlFor="username">Username</label>
-        <div className="controls">
-          <input type="text" id="username" name="username" placeholder="" className="input-xlarge" />
-          <p className="help-block">Username can contain any letters or numbers, without spaces</p>
-        </div>
-      </div>
+class SignUp extends React.Component {
+  constructor (props) {
+    super(props);
 
-      <div className="control-group">
-        <label className="control-label" htmlFor="email">E-mail</label>
-        <div className="controls">
-          <input type="text" id="email" name="email" placeholder="" className="input-xlarge" />
-          <p className="help-block">Please provide your E-mail</p>
-        </div>
-      </div>
+    this.state = {
+      errors: {},
+      user: {
+        username: '',
+        email: '',
+        password: ''
+      }
+    };
 
-      <div className="control-group">
-        <label className="control-label" htmlFor="password">Password</label>
-        <div className="controls">
-          <input type="password" id="password" name="password" placeholder="" className="input-xlarge" />
-          <p className="help-block">Password should be at least 4 characters</p>
-        </div>
-      </div>
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
-      <div className="control-group">
-        <label className="control-label" htmlFor="password_confirm">Password (Confirm)</label>
-        <div className="controls">
-          <input type="password" id="password_confirm" name="password_confirm" placeholder="" className="input-xlarge" />
-          <p className="help-block">Please confirm password</p>
-        </div>
-      </div>
+  onSubmit (event) {
+    const user = {
+      username: 'foo',
+      email: 'bar@bar.com'
+    };
 
-      <div className="control-group">
-        <div className="controls">
-          <button className="btn btn-success">Register</button>
-        </div>
-      </div>
-    </fieldset>
-  </form>
-);
+    event.preventDefault();
+    api.createUser(user)
+      .then(resp => (
+        console.log(resp)
+      ));
+  }
+
+  render () {
+    return (
+      <SignUpForm
+        onSubmit={this.onSubmit}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
+    );
+  }
+}
 
 export default SignUp;

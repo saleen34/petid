@@ -31,7 +31,7 @@ const Nav = props => (
         <div className="collapse navbar-collapse mt-2 mt-md-0" id="navbarNavDropdown">
           <ul className="navbar-nav">
             {props.menus.map((item, index) => (
-              <MenuItem name={item.name} key={item.id} />
+              <MenuItem name={item.name} key={item.id} link={item.link} />
             ))}
           </ul>
         </div>

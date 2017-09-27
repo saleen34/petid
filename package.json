@@ -6,7 +6,9 @@
   "scripts": {
     "watch:build": "webpack -wd",
     "watch:server": "nodemon --exec babel-node index.js --ignore public/",
+    "watch:server:debug": "nodemon --inspect-brk --exec babel-node index.js --ignore public/",
     "start": "npm-run-all --parallel watch:server watch:build",
+    "startDebug": "npm-run-all --parallel watch:server:debug watch:build",
     "test": "jest",
     "debugTest": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "seed": "node_modules/babel-cli/bin/babel-node.js db/seed.jsx"
@@ -23,6 +25,7 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.15.5",
     "json-loader": "^0.5.7",

@@ -8,11 +8,12 @@ describe('components/MenuItem', () => {
   const div = document.createElement('div');
 
   it('renders without crashing', () => {
-    ReactDOM.render(<Router><MenuItem name='Warf Forehead' /></Router>, div);
+    ReactDOM.render(<Router><MenuItem name="Warf's Forehead" link="/crinkled" /></Router>, div);
   });
 
   it('renders li with a link', () => {
-    const r = mount(<Router><MenuItem name='Warf Forehead' /></Router>);
-    expect(r.find('MenuItem').props().name).toBe('Warf Forehead');
+    const r = mount(<Router><MenuItem name="Warf's Forehead" link="/crinkled" /></Router>);
+    expect(r.find('MenuItem').props().name).toBe("Warf's Forehead");
+    expect(r.find('MenuItem').props().link).toBe('/crinkled');
   });
 });

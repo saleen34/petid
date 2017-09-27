@@ -10,20 +10,28 @@ MongoClient.connect(config.mongodbUri, (err, db) => {
   mdb = db;
 });
 
-const router = express.Router();
+class MyRouter {
+  constructor () {
+    this.routes = express.Router();
 
-router.get('/people/:personId', (req, res) => {
-  mdb.collection('people')
-    .findOne({ id: Number(req.params.personId) })
-    .then(person => res.send(person))
-    .catch(console.error);
-});
+    this.routes.get('/people/:personId', (req, res) => {
+      mdb.collection('people')
+        .findOne({ id: Number(req.params.personId) })
+        .then(person => res.status(200).send(person))
+        .catch(console.error);
+    });
 
-router.get('/animals/:animalId', (req, res) => {
-  mdb.collection('animals')
-    .findOne({ id: Number(req.params.animalId) })
-    .then(animal => res.send(animal))
-    .catch(console.error);
-});
+    this.routes.get('/animals/:animalId', (req, res) => {
+      mdb.collection('animals')
+        .findOne({ id: Number(req.params.animalId) })
+        .then(animal => res.status(200).send(animal))
+        .catch(console.error);
+    });
 
-export default router;
+    this.routes.post('/user/create', (req, res) => {
+      console.log(req.body);
+    });
+  }
+}
+
+export default MyRouter;
