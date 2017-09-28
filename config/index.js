@@ -6,7 +6,8 @@ const config = {
   get serverUrl () {
     return `http://${this.host}:${this.port}`;
   },
-  mongodbUri: 'mongodb://localhost:27017/test'
+  mongodbUri: 'mongodb://localhost:27017/test',
+  jwtSecret: 'cn8KTmH2FoOoWxJQ7ieN'
 };
 
 module.exports = config;

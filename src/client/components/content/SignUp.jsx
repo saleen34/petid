@@ -21,7 +21,8 @@ class SignUp extends React.Component {
   onSubmit (event) {
     const user = {
       username: 'foo',
-      email: 'bar@bar.com'
+      email: 'bar@bar.com',
+      other: 'wers'
     };
 
     event.preventDefault();

@@ -16,15 +16,15 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    api.fetchPerson(1)
+    api.fetchAnimals()
       .then(resp => (
         this.setState({ owner: resp })
       ));
 
-    api.fetchAnimal(2)
-      .then(resp => (
-        this.setState({ animal: resp })
-      ));
+    // api.fetchAnimal(2)
+    //   .then(resp => (
+    //     this.setState({ animal: resp })
+    //   ));
   }
 
   render () {

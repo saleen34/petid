@@ -1,7 +1,9 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
+import mongoose from 'mongoose';
 import assert from 'assert';
 import config from '../../../config';
+import User from '../models/User';
 
 let mdb;
 
@@ -29,7 +31,9 @@ class MyRouter {
     });
 
     this.routes.post('/user/create', (req, res) => {
-      console.log(req.body);
+      const user = new User(req.body);
+      //const user = mongoose.model('User', new UserSchema());
+debugger;
     });
   }
 }
