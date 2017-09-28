@@ -1,26 +1,26 @@
 import mongoose from 'mongoose';
 import config from '../config';
-import testAnimals from './testAnimals.json';
-import testPeople from './testPeople.json';
+
 import Animal from '../src/server/models/Animal';
 
-mongoose.connect(config.mongodbUri, { useMongoClient: true });
+import testAnimals from './testAnimals.json';
+import testPeople from './testPeople.json';
+
+/* eslint-disable no-console */
+
+mongoose.connect(config.mongodbUri);
 mongoose.Promise = global.Promise;
 
 testAnimals.forEach((data) => {
   const animal = new Animal(data);
-  const promise = animal.save();
-  promise.then((doc) => {
-    console.log('Inserted: ', doc.name);
-  });
+  animal.save()
+    .then((err, doc) => {
+      if (err) {
+        console.log('error: ', err);
+      } else {
+        console.log('Inserted: ', doc.name);
+      }
+    })
+    .catch((err) => { console.log(err.message); })
+    .then(() => { mongoose.connection.close(); });
 });
-
-// testPeople.forEach((data) => {
-//   const animal = new Animal(data);
-//   const promise = animal.save();
-//   promise.then((doc) => {
-//    console.log(doc);
-//   });
-// });
-
-mongoose.connection.close();

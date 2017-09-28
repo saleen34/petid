@@ -7,7 +7,7 @@ import config from './config';
 
 import Animals from './src/server/routes/Animals';
 
-mongoose.connect(config.mongodbUri);
+mongoose.connect(config.mongodbUri, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 const app = express();

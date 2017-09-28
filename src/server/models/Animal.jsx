@@ -12,4 +12,4 @@ const animalSchema = new mongoose.Schema({
   image: String
 }, { timestamps: true });
 
-export default mongoose.model('Animal', animalSchema);
+export default mongoose.model('Animal', animalSchema, 'Animal');

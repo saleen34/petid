@@ -1,6 +1,5 @@
 [
 {
-  "id": 1,
   "name": "Fender",
   "gender": "Male",
   "breed": "German Shorthair Pointer / Pitt",
@@ -11,7 +10,6 @@
   "image": "images/fender.jpg"
 },
 {
-  "id": 2,
   "name": "Bentley",
   "gender": "Male",
   "breed": "Poodle",

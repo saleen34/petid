@@ -6,7 +6,15 @@ class Animals {
     this.routes = express.Router();
 
     this.routes.get('/', (req, res) => {
-      AnimalController.list(req, res);
+      AnimalController.getAll(req, res);
+    });
+
+    this.routes.get('/:id', (req, res) => {
+      AnimalController.getOne(req, res);
+    });
+
+    this.routes.delete('/:id', (req, res) => {
+      AnimalController.remove(req, res);
     });
   }
 }
