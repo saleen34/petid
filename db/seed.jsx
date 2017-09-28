@@ -1,19 +1,26 @@
-import { MongoClient } from 'mongodb';
-import assert from 'assert';
+import mongoose from 'mongoose';
 import config from '../config';
 import testAnimals from './testAnimals.json';
 import testPeople from './testPeople.json';
+import Animal from '../src/server/models/Animal';
 
-MongoClient.connect(config.mongodbUri, (err, db) => {
-  assert.equal(null, err);
+mongoose.connect(config.mongodbUri, { useMongoClient: true });
+mongoose.Promise = global.Promise;
 
-  db.collection('animals')
-    .insertMany(testAnimals)
-    .then(response => console.log('Animals:', response.insertedCount));
-
-  db.collection('people')
-    .insertMany(testPeople)
-    .then(response => console.log('People:', response.insertedCount));
-
-  db.close();
+testAnimals.forEach((data) => {
+  const animal = new Animal(data);
+  const promise = animal.save();
+  promise.then((doc) => {
+    console.log('Inserted: ', doc.name);
+  });
 });
+
+// testPeople.forEach((data) => {
+//   const animal = new Animal(data);
+//   const promise = animal.save();
+//   promise.then((doc) => {
+//    console.log(doc);
+//   });
+// });
+
+mongoose.connection.close();
