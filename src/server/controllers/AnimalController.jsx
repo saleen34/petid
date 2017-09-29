@@ -1,43 +1,36 @@
 import Animal from '../models/Animal';
 
 class AnimalController {
-  static getAll (req, res) {
-    Animal.find((err, animals) => {
-      if (err) {
-        return res.status(500)
-          .json({
-            message: 'Error getting animals.'
-          });
-      }
-      return res.status(200).json(animals);
-    });
+  static async getAll () {
+    return Animal.find();
   }
 
-  static getOne (req, res) {
-    Animal.findOne({ _id: req.params.id }, (err, animal) => {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error getting animal.'
-        });
-      }
-      if (!animal) {
-        return res.status(404).json({
-          message: 'Animal does not exists'
-        });
-      }
-      return res.json(animal);
-    });
+  static async getOne (id) {
+    return Animal.findOne({ _id: id });
   }
 
-  static remove (req, res) {
-    Animal.findByIdAndRemove(req.params.id, (err, animal) => {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error deleting animal.'
-        });
-      }
-      return res.json(animal);
-    });
+  static async remove (id) {
+    return Animal.findByIdAndRemove(id);
+  }
+
+  static async update (req) {
+    const animal = await Animal.findOne({ _id: req.params.id });
+
+    animal.name = req.params.name ? req.params.name : animal.name;
+    animal.gender = req.params.gender ? req.params.gender : animal.gender;
+    animal.breed = req.params.breed ? req.params.breed : animal.breed;
+    animal.color = req.params.color ? req.params.color : animal.color;
+    animal.birthdate = req.params.birthdate ? req.params.birthdate : animal.birthdate;
+    animal.weight = req.params.weight ? req.params.weight : animal.weight;
+    animal.notes = req.params.notes ? req.params.notes : animal.notes;
+    animal.image = req.params.image ? req.params.image : animal.image;
+
+    return animal.save();
+  }
+
+  static async create (animal) {
+    const newAnimal = new Animal(animal);
+    return newAnimal.save();
   }
 }
 

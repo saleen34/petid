@@ -6,40 +6,26 @@ import Animal from '../../src/server/models/Animal';
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 
+afterAll(() => {
+  mongoose.connection.close();
+});
+
 describe('Test Animals', () => {
-  test('/ should bring back animals', (done) => {
-    request(app).get('/api/animals').then((response) => {
-      expect(response.statusCode).toBe(200);
-      done();
-    });
+  test('/ should bring back animals', async () => {
+    const resp = await request(app).get('/api/animals');
+    expect(resp.statusCode).toBe(200);
   });
 
-  test('/api/animals/{$id} should bring back one animal', (done) => {
-    let id = null;
-
+  test('/api/animals/{$id} should bring back one animal', async () => {
     const dog = { name: 'Fender' };
     const animal = new Animal(dog);
-    animal.save()
-      .then((doc, err) => {
-        if (err) {
-          console.log('error: ', err);
-        } else {
-          id = doc._id;
-        }
-      })
-      .catch((err) => { console.log(err.message); })
-      .then(() => {
-        request(app).get('/api/animals/'.concat(id)).then((response) => {
-          expect(response.statusCode).toBe(200);
-          expect(response.body.name).toBe('Fender');
+    const saveResp = await animal.save();
+    const animalResp = await request(app).get('/api/animals/'.concat(saveResp._id));
 
-          request(app).delete('/api/animals/'.concat(id)).then((deleteResponse) => {
-            expect(response.statusCode).toBe(200);
-            expect(response.body.name).toBe('Fender');
-            done();
-            mongoose.connection.close();
-          });
-        });
-      });
+    expect(animalResp.statusCode).toBe(200);
+    expect(animalResp.body.name).toBe('Fender');
+
+    await request(app).delete('/api/animals/'.concat(saveResp._id));
+    mongoose.connection.close();
   });
 });

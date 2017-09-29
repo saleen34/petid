@@ -1,7 +1,8 @@
 [
   {
-    "name": "Harry Holmes",
+    "username": "hholmes",
     "email": "test@gmail.com",
+    "name": "Harry Holmes",
     "cell": "503-666-7777",
     "home": "206-333-4444",
     "address1": "1 High Street SE",
@@ -12,8 +13,9 @@
     "country": "US"
   },
   {
-    "name": "Nick Pate",
+    "username": "saleen34",
     "email": "saleen34@gmail.com",
+    "name": "Nick Pate",
     "cell": "503-310-1586",
     "home": "503-555-5555",
     "address1": "14722 sw Peak Ct",
