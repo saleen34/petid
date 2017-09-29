@@ -1,5 +1,6 @@
 import Animal from '../models/Animal';
 
+/* TODO VALIDATION */
 class AnimalController {
   static async getAll () {
     return Animal.find();
@@ -13,6 +14,7 @@ class AnimalController {
     return Animal.findByIdAndRemove(id);
   }
 
+  /* TODO use some sort of populate method */
   static async update (req) {
     const animal = await Animal.findOne({ _id: req.params.id });
 

@@ -6,6 +6,7 @@ import path from 'path';
 import config from './config';
 
 import Animals from './src/server/routes/Animals';
+import Users from './src/server/routes/Users';
 
 mongoose.connect(config.mongodbUri, { useMongoClient: true });
 mongoose.Promise = global.Promise;
@@ -27,5 +28,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/animals', new Animals().routes);
+app.use('/api/users', new Users().routes);
 
 module.exports = app;

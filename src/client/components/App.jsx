@@ -31,7 +31,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <Nav menus={menus} />
-        <Content person={this.state.owner} animal={this.state.animal} />
+        <Content user={this.state.owner} animal={this.state.animal} />
         <Footer />
       </div>
     );
