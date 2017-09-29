@@ -7,38 +7,110 @@ class SignUp extends React.Component {
     super(props);
 
     this.state = {
-      errors: {},
-      user: {
-        username: '',
-        email: '',
-        password: ''
-      }
+      username: '',
+      email: '',
+      password: ''
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   onSubmit (event) {
-    const user = {
-      username: 'foo',
-      email: 'bar@bar.com',
-      other: 'wers'
-    };
-
     event.preventDefault();
-    api.createUser(user)
+console.log(this.state);
+    api.createUser(this.state)
       .then(resp => (
         console.log(resp)
       ));
   }
 
+  handleChange (event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
   render () {
     return (
-      <SignUpForm
-        onSubmit={this.onSubmit}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+      <div className="Content container-fluid">
+        <form className="form-horizontal" onSubmit={this.onSubmit}>
+          <fieldset>
+            <div id="legend">
+              <legend className="">Register</legend>
+            </div>
+            <div className="control-group">
+              <label className="control-label" htmlFor="username">Username</label>
+              <div className="controls">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  className="input-xlarge"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+                <p className="help-block">
+                  Username can contain any letters or numbers, without spaces
+                </p>
+              </div>
+            </div>
+
+            <div className="control-group">
+              <label className="control-label" htmlFor="email">E-mail</label>
+              <div className="controls">
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  className="input-xlarge"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+                <p className="help-block">Please provide your E-mail</p>
+              </div>
+            </div>
+
+            <div className="control-group">
+              <label className="control-label" htmlFor="password">Password</label>
+              <div className="controls">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="input-xlarge"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+                <p className="help-block">Password should be at least 4 characters</p>
+              </div>
+            </div>
+
+            <div className="control-group">
+              <label className="control-label" htmlFor="password_confirm">Password (Confirm)</label>
+              <div className="controls">
+                <input
+                  type="password"
+                  id="password_confirm"
+                  name="password_confirm"
+                  className="input-xlarge"
+                />
+                <p className="help-block">Please confirm password</p>
+              </div>
+            </div>
+
+            <div className="control-group">
+              <div className="controls">
+                <button className="btn btn-success">Sign Up</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     );
   }
 }
