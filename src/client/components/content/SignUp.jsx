@@ -1,5 +1,4 @@
 import React from 'react';
-import SignUpForm from './SignUpForm';
 import * as api from '../../api';
 
 class SignUp extends React.Component {
@@ -16,13 +15,9 @@ class SignUp extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  onSubmit (event) {
+  async onSubmit (event) {
     event.preventDefault();
-console.log(this.state);
-    api.createUser(this.state)
-      .then(resp => (
-        console.log(resp)
-      ));
+    await api.createUser(this.state);
   }
 
   handleChange (event) {
