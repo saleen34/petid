@@ -16,22 +16,22 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    api.fetchAnimals()
-      .then(resp => (
-        this.setState({ owner: resp })
-      ));
+    api.fetchUser('59cebd22498d5e615b3f768c')
+      .then((user) => {
+        this.setState({ user });
+      });
 
-    // api.fetchAnimal(2)
-    //   .then(resp => (
-    //     this.setState({ animal: resp })
-    //   ));
+    api.fetchAnimal('59cebd22498d5e615b3f7689')
+      .then((animal) => {
+        this.setState({ animal });
+      });
   }
 
   render () {
     return (
       <div className="container">
         <Nav menus={menus} />
-        <Content user={this.state.owner} animal={this.state.animal} />
+        <Content user={this.state.user} animal={this.state.animal} />
         <Footer />
       </div>
     );

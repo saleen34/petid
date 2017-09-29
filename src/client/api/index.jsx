@@ -9,14 +9,13 @@ export const fetchAnimal = animalId =>
     .then(resp => resp.data);
 
 export const fetchUsers = () =>
-  axios.get('/api/user/')
+  axios.get('/api/users/')
     .then(resp => resp.data);
 
 export const fetchUser = userId =>
-  axios.get('/api/user/'.concat(userId))
+  axios.get('/api/users/'.concat(userId))
     .then(resp => resp.data);
 
 export const createUser = user =>
-  axios.post('api/user/', user)
+  axios.post('api/users/', user)
     .then(resp => resp.data);
-

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   user: PropTypes.shape({
-    id: PropTypes.number,
+    _id: PropTypes.string,
     name: PropTypes.string,
     email: PropTypes.string,
     cell: PropTypes.string,

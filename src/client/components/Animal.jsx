@@ -5,7 +5,7 @@ import Image from '../components/Image';
 
 const propTypes = {
   animal: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string,
     gender: PropTypes.string,
