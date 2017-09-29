@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Location from '../src/client/components/Location';
+import Location from '../../src/client/components/Location';
 
 describe('components/Location', () => {
   const div = document.createElement('div');

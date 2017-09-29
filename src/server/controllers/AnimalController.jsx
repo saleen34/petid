@@ -15,19 +15,26 @@ class AnimalController {
   }
 
   /* TODO use some sort of populate method */
-  static async update (req) {
-    const animal = await Animal.findOne({ _id: req.params.id });
+  static async update (id, animal) {
+    const updated = await Animal.findOne({ _id: id });
 
-    animal.name = req.params.name ? req.params.name : animal.name;
-    animal.gender = req.params.gender ? req.params.gender : animal.gender;
-    animal.breed = req.params.breed ? req.params.breed : animal.breed;
-    animal.color = req.params.color ? req.params.color : animal.color;
-    animal.birthdate = req.params.birthdate ? req.params.birthdate : animal.birthdate;
-    animal.weight = req.params.weight ? req.params.weight : animal.weight;
-    animal.notes = req.params.notes ? req.params.notes : animal.notes;
-    animal.image = req.params.image ? req.params.image : animal.image;
+    updated.name = animal.name ? animal.name : null;
+    updated.gender = animal.gender ? animal.gender : null;
+    updated.breed = animal.breed ? animal.breed : null;
+    updated.color = animal.color ? animal.color : null;
+    updated.birthdate = animal.birthdate ? animal.birthdate : null;
+    updated.weight = animal.weight ? animal.weight : null;
+    updated.notes = animal.notes ? animal.notes : null;
+    updated.image = animal.image ? animal.image : null;
 
-    return animal.save();
+    try {
+      await updated.save();
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+
+    return updated.save();
   }
 
   static async create (animal) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import EditInline from '../src/client/components/EditInline';
+import EditInline from '../../src/client/components/EditInline';
 
 describe('components/EditInline', () => {
   it('renders without crashing', () => {

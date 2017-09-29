@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import Image from '../src/client/components/Image';
+import Image from '../../src/client/components/Image';
 
 describe('components/Image', () => {
   const div = document.createElement('div');

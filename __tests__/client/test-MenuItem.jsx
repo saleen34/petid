@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { mount } from 'enzyme';
-import MenuItem from '../src/client/components/MenuItem';
+import MenuItem from '../../src/client/components/MenuItem';
 
 describe('components/MenuItem', () => {
   const div = document.createElement('div');

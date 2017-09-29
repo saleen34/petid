@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
-import SignUpForm from '../src/client/components/content/SignUpForm';
+import SignUpForm from '../../src/client/components/content/SignUpForm';
 
 describe('components/SignUpForm', () => {
   const div = document.createElement('div');

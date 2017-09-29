@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Footer from '../src/client/components/Footer';
+import Footer from '../../src/client/components/Footer';
 
 describe('components/Footer', () => {
   const div = document.createElement('div');
