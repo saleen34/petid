@@ -16,12 +16,12 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    api.fetchUser('59cebd22498d5e615b3f768c')
+    api.fetchUsers()
       .then((user) => {
         this.setState({ user });
       });
 
-    api.fetchAnimal('59cebd22498d5e615b3f7689')
+    api.fetchAnimals()
       .then((animal) => {
         this.setState({ animal });
       });

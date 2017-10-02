@@ -11,7 +11,7 @@
     "startDebug": "npm-run-all --parallel watch:server:debug watch:build",
     "test": "jest",
     "debugTest": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "seed": "node_modules/babel-cli/bin/babel-node.js db/seed.jsx"
+    "seed": "node_modules/babel-cli/bin/babel-node.js db/index.jsx"
   },
   "keywords": [
     "Pet",
