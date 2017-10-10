@@ -6,8 +6,9 @@ class UserController {
     return User.find();
   }
 
-  static async getOne (id) {
-    return User.findOne({ _id: id });
+  static async getOne (root, id) {
+console.log(id);
+    return User.findOne({ userId: id });
   }
 
   static async remove (id) {
@@ -16,7 +17,7 @@ class UserController {
 
   /* TODO use some sort of populate method */
   static async update (id, user) {
-    const updated = await User.findOne({ _id: id });
+    const updated = await User.findOne({ userId: id });
 
     updated.username = user.username ? user.username : null;
     updated.email = user.email ? user.email : null;

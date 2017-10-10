@@ -1,6 +1,5 @@
 [
   {
-    "userId": 0,
     "username": "hholmes",
     "email": "test@gmail.com",
     "name": "Harry Holmes",
@@ -14,11 +13,23 @@
     "country": "US"
   },
   {
-    "userId": 1,
     "username": "saleen34",
     "email": "saleen34@gmail.com",
     "name": "Nick Pate",
     "cell": "503-310-1586",
+    "home": "503-555-5555",
+    "address1": "14722 sw Peak Ct",
+    "address2": "--",
+    "city": "Tigard",
+    "state": "OR",
+    "zip": "97224",
+    "country": "US"
+  },
+  {
+    "username": "courts311",
+    "email": "courts311@gmail.com",
+    "name": "Courtney Pate",
+    "cell": "503-320-1673",
     "home": "503-555-5555",
     "address1": "14722 sw Peak Ct",
     "address2": "--",

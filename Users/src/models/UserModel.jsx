@@ -5,8 +5,7 @@ const autoIncrement = new AutoIncrement(mongoose);
 
 /* TODO: Unique checks, password hashing, formatting */
 const userSchema = new mongoose.Schema({
-  _id: { type: String, required: true },
-  userId: { type: Number, default: 0 },
+  userId: { type: Number, default: 0, index: true },
   username: { type: String, lowercase: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true },
   email: { type: String, lowercase: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
   salt: String,
