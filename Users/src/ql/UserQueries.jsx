@@ -4,12 +4,12 @@ import {
 } from 'graphql';
 
 import UserType from './UserType';
-import User from './UserSchema';
+import UserController from '../controller/UserController';
 
 export default {
   users: {
     type: new GraphQLList(UserType),
-    resolve: User.getUsers
+    resolve: UserController.getAll
   },
   user: {
     type: UserType,
@@ -18,6 +18,6 @@ export default {
         type: GraphQLID
       }
     },
-    resolve: User.getUserByPosition
+    resolve: UserController.getOne
   }
 };

@@ -9,8 +9,4 @@ const app = express();
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-// app.get('/', (req, res) => {
-//   res.send('INDEX');
-// });
-
 module.exports = app;

@@ -1,6 +1,6 @@
 // schema.js
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
-import { UserQueries } from './models/User';
+import { UserQueries } from './ql/UserQL';
 
 const RootQuery = new GraphQLObjectType({
   name: 'Query',

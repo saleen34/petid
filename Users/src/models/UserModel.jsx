@@ -24,14 +24,4 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(autoIncrement, { inc_field: 'userId' });
 
-const User = mongoose.model('User', userSchema, 'User');
-
-module.exports = User;
-
-module.exports.getUsers = () => {
-  return new Promise((resolve, reject) => {
-    User.find({}).exec((err, res) => {
-      err ? reject(err) : resolve(res);
-    });
-  });
-};
+export default mongoose.model('User', userSchema, 'User');
