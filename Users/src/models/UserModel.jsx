@@ -1,11 +1,7 @@
 import mongoose from 'mongoose';
-import AutoIncrement from 'mongoose-sequence';
-
-const autoIncrement = new AutoIncrement(mongoose);
 
 /* TODO: Unique checks, password hashing, formatting */
 const userSchema = new mongoose.Schema({
-  userId: { type: Number, default: 0, index: true },
   username: { type: String, lowercase: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true },
   email: { type: String, lowercase: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
   salt: String,
@@ -20,7 +16,5 @@ const userSchema = new mongoose.Schema({
   zip: String,
   country: String
 }, { timestamps: true });
-
-userSchema.plugin(autoIncrement, { inc_field: 'userId' });
 
 export default mongoose.model('User', userSchema, 'User');

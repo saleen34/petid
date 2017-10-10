@@ -9,7 +9,7 @@ export default new GraphQLObjectType({
   name: 'User',
   description: 'A User',
   fields: () => ({
-    userId: {
+    id: {
       type: new GraphQLNonNull(GraphQLID)
     },
     username: {
@@ -25,13 +25,13 @@ export default new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString)
     },
     home: {
-      type: new GraphQLNonNull(GraphQLString)
+      type: GraphQLString
     },
     address1: {
       type: new GraphQLNonNull(GraphQLString)
     },
     address2: {
-      type: new GraphQLNonNull(GraphQLString)
+      type: GraphQLString
     },
     city: {
       type: new GraphQLNonNull(GraphQLString)
@@ -43,7 +43,7 @@ export default new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString)
     },
     country: {
-      type: new GraphQLNonNull(GraphQLString)
+      type: GraphQLString
     }
   })
 });

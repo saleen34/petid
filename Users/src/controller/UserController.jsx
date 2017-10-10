@@ -6,18 +6,17 @@ class UserController {
     return User.find();
   }
 
-  static async getOne (root, id) {
-console.log(id);
-    return User.findOne({ userId: id });
+  static async getOne (root, args) {
+    return User.findOne({ _id: args.id });
   }
 
-  static async remove (id) {
-    return User.findByIdAndRemove(id);
+  static async remove (root, args) {
+    return User.findByIdAndRemove(args.id);
   }
 
   /* TODO use some sort of populate method */
-  static async update (id, user) {
-    const updated = await User.findOne({ userId: id });
+  static async update (root, user) {
+    const updated = await User.findOne({ _id: user.id });
 
     updated.username = user.username ? user.username : null;
     updated.email = user.email ? user.email : null;
@@ -42,7 +41,7 @@ console.log(id);
     return updated;
   }
 
-  static async create (user) {
+  static async create (root, user) {
     const newUser = new User(user);
     return newUser.save();
   }

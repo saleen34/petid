@@ -1,23 +1,21 @@
 import {
   GraphQLList,
-  GraphQLID,
-  GraphQLNonNull
+  GraphQLID
 } from 'graphql';
 
 import UserType from './UserType';
 import UserController from '../controller/UserController';
 
 export default {
-  users: {
+  getAll: {
     type: new GraphQLList(UserType),
     resolve: UserController.getAll
   },
-  user: {
+  getOne: {
     type: UserType,
     args: {
-      userId: {
-        name: 'userId',
-        type: new GraphQLNonNull(GraphQLID)
+      id: {
+        type: GraphQLID
       }
     },
     resolve: UserController.getOne
