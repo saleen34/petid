@@ -1,5 +1,7 @@
 import React from 'react';
 import * as api from '../../api';
+import Profile from '../content/Profile';
+import animal from '../../models/animal.json';
 
 class SignUp extends React.Component {
   constructor (props) {
@@ -8,7 +10,10 @@ class SignUp extends React.Component {
     this.state = {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      name: '',
+      submitted: false,
+      newUser: null
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -17,19 +22,21 @@ class SignUp extends React.Component {
 
   async onSubmit (event) {
     event.preventDefault();
-    const user = await api.createUser(this.state);
-debugger;
+    const newUser = await api.createUser(this.state);
+    this.setState({ submitted: true, newUser });
   }
 
   handleChange (event) {
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-
     this.setState({
-      [event.target.name]: value
+      [event.target.name]: event.target.value
     });
   }
 
   render () {
+    if (this.state.submitted) {
+      return <Profile user={this.state.newUser} animal={animal} />;
+    }
+
     return (
       <div className="Content container-fluid">
         <form className="form-horizontal" onSubmit={this.onSubmit}>
@@ -94,6 +101,21 @@ debugger;
                   className="input-xlarge"
                 />
                 <p className="help-block">Please confirm password</p>
+              </div>
+            </div>
+
+            <div className="control-group">
+              <label className="control-label" htmlFor="name">Name</label>
+              <div className="controls">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="input-xlarge"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
+                <p className="help-block">Please provide your Name</p>
               </div>
             </div>
 

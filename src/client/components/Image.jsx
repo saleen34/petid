@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired
+  src: PropTypes.string,
+  alt: PropTypes.string
+};
+
+const defaultProps = {
+  src: 'images/profile.png',
+  alt: ''
 };
 
 const Image = ({ src, alt }) => <img className="Image" src={src} alt={alt} />;
 
-Image.defaultProps = {
-  src: 'images/profile.png'
-};
-
 Image.propTypes = propTypes;
+Image.defaultProps = defaultProps;
 
 export default Image;
