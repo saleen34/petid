@@ -12,14 +12,14 @@ import testPeople from './testPeople.json';
 mongoose.connect(config.mongodbUri, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
-testAnimals.map(async(testData) => {
+testAnimals.map(async (testData) => {
   const animal = new Animal(testData);
   await animal.save();
   console.log('Inserted: ', animal.name);
   mongoose.connection.close();
 });
 
-testPeople.map(async(testData) => {
+testPeople.map(async (testData) => {
   const user = new User(testData);
   await user.save();
   console.log('Inserted: ', user.name);

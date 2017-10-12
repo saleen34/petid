@@ -17,16 +17,15 @@ class SignUp extends React.Component {
 
   async onSubmit (event) {
     event.preventDefault();
-    await api.createUser(this.state);
+    const user = await api.createUser(this.state);
+debugger;
   }
 
   handleChange (event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
 
     this.setState({
-      [name]: value
+      [event.target.name]: value
     });
   }
 

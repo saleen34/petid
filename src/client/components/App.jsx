@@ -10,18 +10,18 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      owner: {},
+      user: {},
       animal: {}
     };
   }
 
   componentDidMount () {
-    api.fetchUsers()
+    api.fetchUser('59dd2d476197ef37ad4428f0')
       .then((user) => {
         this.setState({ user });
       });
 
-    api.fetchAnimals()
+    api.fetchAnimal('59df90cbb53e0b26b4f5abf6')
       .then((animal) => {
         this.setState({ animal });
       });

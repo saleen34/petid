@@ -1,8 +1,6 @@
-const env = process.env;
-
 const config = {
-  port: env.PORT || 8080,
-  host: env.HOST || '127.0.0.1',
+  port: 8080,
+  host: '127.0.0.1',
   get serverUrl () {
     return `http://${this.host}:${this.port}`;
   },

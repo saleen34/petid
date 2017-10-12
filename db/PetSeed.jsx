@@ -16,7 +16,7 @@ class PetSeed {
   }
 
   static async seedAnimals () {
-    testAnimals.map(async(testData) => {
+    testAnimals.map(async (testData) => {
       const animal = new Animal(testData);
       await animal.save();
       console.log('Inserted: ', animal.name);
@@ -24,7 +24,7 @@ class PetSeed {
   }
 
   static async seedUsers () {
-    testPeople.map(async(testData) => {
+    testPeople.map(async (testData) => {
       const user = new User(testData);
       await user.save();
       console.log('Inserted: ', user.name);
