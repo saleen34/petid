@@ -1,9 +1,14 @@
-const env = process.env;
-
 const config = {
-  port: env.PORT || 3000,
-  host: env.HOST || '127.0.0.1',
-  mongodbUrl: 'mongodb://localhost:27017/pet'
+  production: {
+    port: 3000,
+    host: '127.0.0.1',
+    mongodbUrl: 'mongodb://localhost:27017/pet'
+  },
+  default: {
+    port: 3000,
+    host: '127.0.0.1',
+    mongodbUrl: 'mongodb://localhost:27017/test'
+  }
 };
 
-module.exports = config;
+module.exports = (process.env.NODE_ENV === 'production') ? config.production : config.default;
