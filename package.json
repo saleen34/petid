@@ -13,6 +13,16 @@
     "debugTest": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "seed": "node_modules/babel-cli/bin/babel-node.js db/index.jsx"
   },
+  "jest": {
+    "setupFiles": [
+      "./jest-shim.jsx",
+      "./jest-setup.jsx"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(jsx)$",
+    "moduleFileExtensions": [
+      "jsx", "json", "js"
+    ]
+  },
   "keywords": [
     "Pet",
     "Tag",
@@ -44,13 +54,14 @@
     "babel-jest": "^21.0.2",
     "babel-preset-env": "^1.6.0",
     "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.7.2",
     "eslint-config-airbnb-standard": "^1.4.1",
     "jest": "^21.1.0",
     "jest-cli": "^21.1.0",
     "nodemon": "^1.12.1",
     "npm-run-all": "^4.1.1",
-    "react-addons-test-utils": "^15.6.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
     "supertest": "^3.0.0",
     "webpack": "^3.6.0"
